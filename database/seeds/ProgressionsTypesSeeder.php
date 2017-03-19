@@ -11,17 +11,20 @@ class ProgressionsTypesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('progressions_types')->insert([
-            'id_progression' => 1,
-            'id_type' => 1
+        DB::table('progression_type')->insert([
+            'progression_id' => 1,
+            'type_id' => 1,
+            'progression' => 'I-ii-iii-IV'
         ]);
-        DB::table('progressions_types')->insert([
-            'id_progression' => 1,
-            'id_type' => 2
+        DB::table('progression_type')->insert([
+            'progression_id' => 1,
+            'type_id' => 2,
+            'progression' => 'I-ii-iii-IV'
         ]);
-        DB::table('progressions_types')->insert([
-            'id_progression' => 1,
-            'id_type' => 3
+        DB::table('progression_type')->insert([
+            'progression_id' => 1,
+            'type_id' => 3,
+            'progression' => 'I-ii-iii-IV'
         ]);
     }
 }

@@ -13,14 +13,14 @@ class CreateProgressionsTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('progressions_types', function(Blueprint $table)
+        Schema::create('progression_type', function(Blueprint $table)
         {
-            $table->integer('id_progression')->unsigned()->nullable();
-            $table->foreign('id_progression')->references('id')->on('progressions')->onDelete('cascade');
+            $table->integer('progression_id')->unsigned()->nullable();
+            $table->foreign('progression_id')->references('id')->on('progressions')->onDelete('cascade');
 
-            $table->integer('id_type')->unsigned()->nullable();
-            $table->foreign('id_type')->references('id')->on('types')->onDelete('cascade');
-
+            $table->integer('type_id')->unsigned()->nullable();
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
+            $table->string('progression');
             $table->timestamps();
         });
 
@@ -33,6 +33,6 @@ class CreateProgressionsTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('progressions_types');
+        Schema::dropIfExists('progression_type');
     }
 }
