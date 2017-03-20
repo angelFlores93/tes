@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[
+    'uses' => 'generateProgressions@index',
+    'as' => 'home'
+
+]);
+
+Route::get('/generate',[
+    'uses' => 'generateProgressions@generate',
+    'as' => 'generate'
+]);
