@@ -11,10 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 Route::get('test',[
     'uses' => 'testController@index',
     'as' => 'home'
 ]);
+Route::get('/',[
+    'uses' => 'generateProgressions@index',
+    'as' => 'home'
+]);
+Route::get('/generate',[
+    'uses' => 'generateProgressions@generate',
+    'as' => 'generate'
+]);
+
