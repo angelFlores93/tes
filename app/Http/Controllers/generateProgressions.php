@@ -121,6 +121,11 @@ class generateProgressions extends Controller
                 2 => array(5, 3, 0, 4)
             );
         }
-        return array($verseProgressions, $chorusProgressions, $bridgeProgressions, $prechorusProgressions);
+        return array(
+            'verse' => $verseProgressions,
+            'chorus' => $chorusProgressions,
+            'bridge' => $bridgeProgressions,
+            'prechorus' => $prechorusProgressions
+        );
     }
 }
