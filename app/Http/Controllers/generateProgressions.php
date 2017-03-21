@@ -40,12 +40,18 @@ class generateProgressions extends Controller
         }
         $i = 0;
         foreach ($chordsIndex as $index){
+            $chordName = Key::find($index)->name;
             if (isset($progressionFormulaArray[$i])){
-                $chord = Key::find($index)->name.$progressionFormulaArray[$i];
+                if (strpos($chordName, 'I') !== false) {
+                    $chordName = '('.$chordName.')';
+                }
+                $chord = $chordName.$progressionFormulaArray[$i];
             }else{
-                $chord = Key::find($index)->name;
+                $chord = $chordName;
             }
-            $chords[$i++] = $chord;
+            $chords[$i]['name'] = $chord;
+            $chord = preg_replace('/\s+/', '', $chord);
+            $chords[$i++]['path'] = str_replace('#','s', $chord);
         }
         return $chords;
     }
@@ -134,6 +140,7 @@ class generateProgressions extends Controller
             'prechorus' => $this->translateIndexes($prechorusProgressions, $chords)
         );
     }
+
     public function translateIndexes($indexes, $chordsArray){
 
         $final = array();
@@ -142,7 +149,7 @@ class generateProgressions extends Controller
             $i = 0;
             $progression = "";
             foreach ($indexArray as $index) {
-                $progression = $progression.$chordsArray[$index];
+                $progression = $progression.$chordsArray[$index]['name'];
                 if ($i++ < count($indexArray)-1){
                     $progression = $progression.' - ';
                 }
