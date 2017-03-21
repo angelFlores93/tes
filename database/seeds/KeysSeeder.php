@@ -15,13 +15,13 @@ class KeysSeeder extends Seeder
             'name' => 'C'
         ]);
         DB::table('keys')->insert([
-            'name' => 'C#/Db'
+            'name' => 'C# I Db'
         ]);
         DB::table('keys')->insert([
             'name' => 'D'
         ]);
         DB::table('keys')->insert([
-            'name' => 'D#/Eb'
+            'name' => 'D# I Eb'
         ]);
         DB::table('keys')->insert([
             'name' => 'E'
@@ -30,19 +30,19 @@ class KeysSeeder extends Seeder
             'name' => 'F'
         ]);
         DB::table('keys')->insert([
-            'name' => 'F#/Gb'
+            'name' => 'F# I Gb'
         ]);
         DB::table('keys')->insert([
             'name' => 'G'
         ]);
         DB::table('keys')->insert([
-            'name' => 'G#/Ab'
+            'name' => 'G# I Ab'
         ]);
         DB::table('keys')->insert([
             'name' => 'A'
         ]);
         DB::table('keys')->insert([
-            'name' => 'A#/Bb'
+            'name' => 'A# I Bb'
         ]);
         DB::table('keys')->insert([
             'name' => 'B'

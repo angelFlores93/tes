@@ -5,10 +5,17 @@
             <thead>
                 <tr>
                     @foreach ($chords as $chord)
-                    <th class="text-center">{{$chord}}</th>
+                        <th class="text-center">{{$chord['name']}}</th>
                     @endforeach
                 </tr>
             </thead>
+            <tbody>
+                <tr>
+                    @foreach ($chords as $chord)
+                        <td class="text-center"><img src="{{asset('chords/'.$chord['path'].'.png')}}"></td>
+                    @endforeach
+                </tr>
+            </tbody>
         </table>
     </div>
 </div>
