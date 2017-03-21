@@ -15,7 +15,13 @@ class generateProgressions extends Controller
     }
     public function generate(Request $request){
         $chords = $this->generateChords($request->key, $request->variant);
-        dd($this->generatePop($request->variant));
+        $popProgressions = $this->generatePop($request->variant, $chords);
+        $keys = Key::all();
+        return view('home')->with([
+            'keys' => $keys,
+            'chords' => $chords,
+            'popProgressions' => $popProgressions
+        ]);
 
     }
     //get the chord array
@@ -56,7 +62,7 @@ class generateProgressions extends Controller
         }
     }
     //generate pop progressions
-    public function generatePop($variant){
+    public function generatePop($variant, $chords){
         if ($variant == 'major'){
             $verseProgressions = array(
                 0 => array(0, 4, 5, 3),
@@ -93,7 +99,7 @@ class generateProgressions extends Controller
                 0 => array(0, 3, 0),
                 1 => array(0, 4),
                 2 => array(0, 3, 4, 0),
-                3 => array(0, 6, 5, 7),
+                3 => array(0, 6, 5, 6),
                 4 => array(0, 6, 5, 4),
                 5 => array(0, 4, 5, 3),
                 6 => array(0, 4, 5, 2),
@@ -110,10 +116,9 @@ class generateProgressions extends Controller
             );
             $bridgeProgressions = array(
                 0 => array(5, 6, 0, 0),
-                1 => array(1, 3, 4),
-                2 => array(4, 3, 0),
-                3 => array(5, 3, 0, 4),
-                4 => array(5, 4, 3, 4)
+                1 => array(4, 3, 0),
+                2 => array(5, 3, 0, 4),
+                3 => array(5, 4, 3, 4)
             );
             $prechorusProgressions = array(
                 0 => array(3, 0, 4, 5),
@@ -121,11 +126,30 @@ class generateProgressions extends Controller
                 2 => array(5, 3, 0, 4)
             );
         }
+
         return array(
-            'verse' => $verseProgressions,
-            'chorus' => $chorusProgressions,
-            'bridge' => $bridgeProgressions,
-            'prechorus' => $prechorusProgressions
+            'verse' => $this->translateIndexes($verseProgressions, $chords),
+            'chorus' => $this->translateIndexes($chorusProgressions, $chords),
+            'bridge' => $this->translateIndexes($bridgeProgressions, $chords),
+            'prechorus' => $this->translateIndexes($prechorusProgressions, $chords)
         );
+    }
+    public function translateIndexes($indexes, $chordsArray){
+
+        $final = array();
+        $j = 0;
+        foreach ($indexes as $indexArray){
+            $i = 0;
+            $progression = "";
+            foreach ($indexArray as $index) {
+                $progression = $progression.$chordsArray[$index];
+                if ($i++ < count($indexArray)-1){
+                    $progression = $progression.' - ';
+                }
+            }
+
+            $final[$j++] = $progression;
+        }
+        return $final;
     }
 }

@@ -41,5 +41,15 @@
              </div>
         </div>
 
+        @if(isset($chords))
+            @include('Generated\chords')
+        @endif
+        <div class="container">
+            <div class="panel-group" id="accordion">
+            @if(isset($popProgressions))
+                @include('Generated\generatePop')
+            @endif
+            </div>
+        </div>
     </body>
 </html>
