@@ -17,13 +17,15 @@ class generateProgressions extends Controller
         $chords = $this->generateChords($request->key, $request->variant);
         $popProgressions = $this->generatePop($request->variant, $chords);
         $rockProgressions = $this->generateRock($request->variant, $chords);
+        $bluesProgressions = $this->generateBlues($request->variant, $chords);
         //dd($popProgressions);
         $keys = Key::all();
         return view('home')->with([
             'keys' => $keys,
             'chords' => $chords,
             'popProgressions' => $popProgressions,
-            'rockProgressions' => $rockProgressions
+            'rockProgressions' => $rockProgressions,
+            'bluesProgressions' => $bluesProgressions,
         ]);
 
     }
@@ -207,6 +209,37 @@ class generateProgressions extends Controller
             'chorus' => $this->translateIndexes($chorusProgressions, $chords),
             'bridge' => $this->translateIndexes($bridgeProgressions, $chords),
             'prechorus' => $this->translateIndexes($prechorusProgressions, $chords)
+        );
+    }
+    public function generateBlues($variant, $chords){
+        if ($variant == 'major'){
+            $eightProgressions = array(
+                0 => array(0, 0, 0, 0, 3, 3, 0, 0),
+                1 => array(0, 0, 3, 0, 3, 3, 0, 0),
+                2 => array(0, 3, 4, 0, 3, 3, 4, 0)
+            );
+            $twelveProgressions = array(
+                0 => array(0, 0, 0, 0, 3, 3, 0, 0, 4, 3, 0, 0),
+                1 => array(0, 0, 3, 0, 3, 3, 0, 0, 4, 3, 0, 0),
+                2 => array(0, 3, 4, 0, 3, 3, 4, 0, 4, 3, 0, 0)
+            );
+        }else {
+            $eightProgressions = array(
+                0 => array(0, 0, 0, 0, 3, 3, 0, 0),
+                1 => array(0, 0, 3, 0, 3, 3, 0, 0),
+                2 => array(0, 3, 4, 0, 3, 3, 4, 0)
+            );
+            $twelveProgressions = array(
+                0 => array(0, 0, 0, 0, 3, 3, 0, 0, 4, 3, 0, 0),
+                1 => array(0, 0, 3, 0, 3, 3, 0, 0, 4, 3, 0, 0),
+                2 => array(0, 3, 4, 0, 3, 3, 4, 0, 4, 3, 0, 0)
+            );
+
+        }
+
+        return array(
+            'eight' => $this->translateIndexes($eightProgressions, $chords),
+            'twelve' => $this->translateIndexes($twelveProgressions, $chords)
         );
     }
     //translate index array into progression array
