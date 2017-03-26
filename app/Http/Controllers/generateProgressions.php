@@ -16,11 +16,14 @@ class generateProgressions extends Controller
     public function generate(Request $request){
         $chords = $this->generateChords($request->key, $request->variant);
         $popProgressions = $this->generatePop($request->variant, $chords);
+        $rockProgressions = $this->generateRock($request->variant, $chords);
+        //dd($popProgressions);
         $keys = Key::all();
         return view('home')->with([
             'keys' => $keys,
             'chords' => $chords,
-            'popProgressions' => $popProgressions
+            'popProgressions' => $popProgressions,
+            'rockProgressions' => $rockProgressions
         ]);
 
     }
@@ -140,7 +143,73 @@ class generateProgressions extends Controller
             'prechorus' => $this->translateIndexes($prechorusProgressions, $chords)
         );
     }
+    public function generateRock($variant, $chords){
+        if ($variant == 'major'){
+            $verseProgressions = array(
+                0 => array(0, 3, 4),
+                1 => array(0, 4, 3),
+                2 => array(0, 4, 5),
+                3 => array(0, 3, 5, 4),
+                4 => array(0, 4, 5, 3),
+                5 => array(0, 5, 3, 4),
+                6 => array(0, 4, 5, 4, 0, 1, 1, 4)
+            );
+            $chorusProgressions = array(
+                0 => array(4, 5, 3, 0),
+                1 => array(4, 3, 0),
+                2 => array(0, 4, 5, 3),
+                3 => array(5, 3, 0, 4),
+                4 => array(5, 4, 3, 4)
+            );
+            $bridgeProgressions = array(
+                0 => array(1, 3, 4),
+                1 => array(4, 3, 0),
+                2 => array(5, 3, 0, 4),
+                3 => array(5, 4, 3, 4)
+            );
+            $prechorusProgressions = array(
+                0 => array(3, 0, 4, 5),
+                1 => array(5, 4, 3, 4),
+                2 => array(5, 3, 0, 4)
+            );
+        }else {
+            $verseProgressions = array(
+                0 => array(0, 3, 4),
+                1 => array(0, 4, 3),
+                2 => array(0, 4, 5),
+                3 => array(0, 3, 5, 4),
+                4 => array(0, 4, 5, 3),
+                5 => array(0, 5, 3, 4),
+                6 => array(0, 4, 5, 4),
+            );
+            $chorusProgressions = array(
+                0 => array(4, 5, 3, 0),
+                1 => array(4, 3, 0),
+                2 => array(0, 5, 2, 6),
+                3 => array(5, 3, 0, 4),
+                4 => array(5, 4, 3, 4)
+            );
+            $bridgeProgressions = array(
+                0 => array(5, 6, 0, 0),
+                1 => array(4, 3, 0),
+                2 => array(5, 3, 0, 4),
+                3 => array(5, 4, 3, 4)
+            );
+            $prechorusProgressions = array(
+                0 => array(3, 0, 4, 5),
+                1 => array(5, 4, 3, 4),
+                2 => array(5, 3, 0, 4)
+            );
+        }
 
+        return array(
+            'verse' => $this->translateIndexes($verseProgressions, $chords),
+            'chorus' => $this->translateIndexes($chorusProgressions, $chords),
+            'bridge' => $this->translateIndexes($bridgeProgressions, $chords),
+            'prechorus' => $this->translateIndexes($prechorusProgressions, $chords)
+        );
+    }
+    //translate index array into progression array
     public function translateIndexes($indexes, $chordsArray){
 
         $final = array();
@@ -148,14 +217,17 @@ class generateProgressions extends Controller
         foreach ($indexes as $indexArray){
             $i = 0;
             $progression = "";
+            $chordsInProgression = array();
             foreach ($indexArray as $index) {
                 $progression = $progression.$chordsArray[$index]['name'];
-                if ($i++ < count($indexArray)-1){
+                if ($i < count($indexArray)-1){
                     $progression = $progression.' - ';
                 }
+                $chordsInProgression[$i++] = $chordsArray[$index]['name'];
             }
 
-            $final[$j++] = $progression;
+            $final[$j]['progression'] = $progression;
+            $final[$j++]['chords'] = $chordsInProgression;
         }
         return $final;
     }
