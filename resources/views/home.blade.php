@@ -9,7 +9,7 @@
                 <div class="col-xs-12">
                     {!! Form::open(['route' => 'generate' ,'method'=>'GET']) !!}
 
-                    <div class="form-group">
+                    <div class="form-group text-center">
                         <div class="col-lg-4">
                             <select  class="form-control" id="key" name="key">
                                 <option value="">Select a key...</option>
@@ -22,7 +22,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group text-center">
                         <div class="col-lg-4">
                             <div class="btn-group">
                                 {{ Form::radio('variant', 'major', true, ['checked' => 'checked']) }} Major
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group text-center">
                         <button type="submit" class="btn btn-default" align="center">
                             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                             Generate
@@ -49,7 +49,12 @@
             @if(isset($popProgressions))
                 @include('Generated\generatePop')
             @endif
+            @if(isset($rockProgressions))
+                @include('Generated\generateRock')
+            @endif
             </div>
         </div>
     </body>
 </html>
+
+
