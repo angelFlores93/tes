@@ -44,6 +44,9 @@
             @if(isset($rockProgressions))
                 @include('Generated\generateRock')
             @endif
+            @if(isset($bluesProgressions))
+                @include('Generated\generateBlues')
+            @endif
             </div>
         </div>
     </body>
