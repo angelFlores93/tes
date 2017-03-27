@@ -1,0 +1,23 @@
+.navbar {
+    background-color: #201B2F;
+    color: white;
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0px;
+    border-radius: 0px;
+
+}
+.stay{
+
+    width:100px;
+
+    position: fixed;
+    top: 0;
+    left: 50%;
+
+}
+
+.dark{
+    background-color: #201B2F;
+    color: white;
+}
