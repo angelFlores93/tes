@@ -1,14 +1,16 @@
-
-
-    <h2>Chords in the key</h2>
-    <table class="table">
-
+<h2>Chords in the key</h2>
+<table class="table">
+    <thead>
         @foreach ($chords as $chord)
+            <th class="text-center">{{$chord['name']}}</th>
+        @endforeach
+    </thead>
+    <tbody>
         <tr>
-
-            <td class="text-center">{{$chord['name']}}<br><img src="{{asset('chords/'.$chord['path'].'.png')}}"></td>
-        </tr>
+            @foreach ($chords as $chord)
+               <td> <img src="{{asset('chords/'.$chord['path'].'.png')}}"></td>
             @endforeach
-
-    </table>
+        </tr>
+    </tbody>
+</table>
 

@@ -1,10 +1,9 @@
 <div class="panel panel-default" id="rockPanel">
-    <div class="panel-heading">
+    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#rock">
         <h4 class="panel-title">
-            <h4><a data-toggle="collapse" data-target="#rock"
-                   href="#rock">
+            <a>
                     <strong>Classic Rock Progressions</strong>
-                </a></h4>
+                </a>
         </h4>
     </div>
     <div id="rock" class="panel-collapse collapse">
