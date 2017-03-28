@@ -23,7 +23,7 @@ ul#piano .white:active {
     border-left:1px solid #999;
     border-bottom:1px solid #999;
     box-shadow:2px 0 3px rgba(0,0,0,0.1) inset, -5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
-    background: linear-gradient(top, #fff 0%,#e9e9e9 100%);
+    /*background: linear-gradient(top, #fff 0%,#e9e9e9 100%);*/
 }
 
 .black {
@@ -45,9 +45,17 @@ ul#piano .white:active {
 ul#piano li:first-child { border-radius:5px 0 5px 5px; }
 ul#piano li:last-child { border-radius:0 5px 5px 5px; }
 .key_white{
+    width:100%;
+    height:100%;
     padding-top: 13em;
     color: black;
 }
 .key_black{
+    width:100%;
+    height:100%;
     padding-top: 3em;
+    padding-left: 2px;
+}
+.key_black:hover{
+    color:white;
 }

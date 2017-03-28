@@ -1,10 +1,9 @@
 <div class="panel panel-default" id="popPanel">
-    <div class="panel-heading">
+    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#pop">
         <h4 class="panel-title">
-            <h4><a data-toggle="collapse" data-target="#pop"
-                   href="#pop">
+            <a >
                     <strong>Pop Progressions</strong>
-                </a></h4>
+                </a>
         </h4>
     </div>
     <div id="pop" class="panel-collapse collapse">
