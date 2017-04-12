@@ -26,6 +26,7 @@ class generateProgressions extends Controller
             'popProgressions' => $popProgressions,
             'rockProgressions' => $rockProgressions,
             'bluesProgressions' => $bluesProgressions,
+            'counter' => 0
         ]);
 
     }
