@@ -84,6 +84,11 @@
             </div>
 
     </body>
+    <footer class="footer dark text-center">
+        <div class ="container">
+        <p><strong>For more information about how this site was build, you can check out this <a>link</a></strong></p>
+        </div>
+    </footer>
 </html>
 
 
