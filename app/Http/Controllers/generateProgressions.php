@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\generateRequest;
 use App\Key;
 use Illuminate\Http\Request;
 
@@ -13,12 +14,11 @@ class generateProgressions extends Controller
             'keys'=> $keys
         ]);
     }
-    public function generate(Request $request){
+    public function generate(generateRequest $request){
         $chords = $this->generateChords($request->key, $request->variant);
         $popProgressions = $this->generatePop($request->variant, $chords);
         $rockProgressions = $this->generateRock($request->variant, $chords);
         $bluesProgressions = $this->generateBlues($request->variant, $chords);
-        //dd($popProgressions);
         $keys = Key::all();
         return view('home')->with([
             'keys' => $keys,

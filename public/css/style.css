@@ -40,7 +40,11 @@
 }
 
 .dark{
-    background-color: #201B2F;
+    background: #201B2F;
+    background: -webkit-linear-gradient(left, #631D39 , #201B2F,#631D39 );
+    background: -o-linear-gradient(right,  #631D39 , #201B2F, #631D39);
+    background: -moz-linear-gradient(right,  #631D39 , #201B2F, #631D39);
+    background: linear-gradient(to right,  #631D39 , #201B2F, #631D39);
     color: white;
 }
 body {
@@ -51,7 +55,7 @@ body {
     color: black;
 }
 .btn.active{
-    background-color: #D73E1F;
+    background-color: #D91052;
     color: white;
 }
 .btn-group>.btn.active {
@@ -84,6 +88,11 @@ body {
     color:white;
 }
 .fa-music{
-    color: #D73E1F;
+    color: #D91052;
 }
 
+.panel-default > .panel-heading {
+    color: white;
+    background-color: #631D39;
+    border-color: #631D39;
+}
