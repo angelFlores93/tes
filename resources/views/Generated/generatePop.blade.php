@@ -10,111 +10,99 @@
         <div class="panel-body">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h4><strong>Verse options</strong></h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="btn-group">
 
-                                    @foreach($popProgressions['verse'] as $progression)
-                                    <div class="col-md-12">
-                                        <div class="row">
+                    <div class="col-md-6">
+                        <h4><strong>Verse options</strong></h4>
+                        <table class="table table-striped text-center">
+                            @foreach($popProgressions['verse'] as $progression)
+                                <tr>
+                                    <td style="background-color: #631D39; color:white"><strong>Try this one</strong></td>
 
-                                            @foreach($progression['chords'] as $chord)
-                                             <div class="col-md-2">
-                                                 {{$chord}}
-                                             </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h4><strong>Chorus options</strong></h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="btn-group">
-                                    @foreach($popProgressions['chorus'] as $progression)
-                                    <div class="col-md-12">
-                                        <div class="row">
-
-                                            @foreach($progression['chords'] as $chord)
-                                            <div class="col-md-2">
+                                    @foreach($progression['chords'] as $chord)
+                                        @if($counter++%2 == 0)
+                                            <td style="background-color: #D73E1F; color: white">
                                                 {{$chord}}
-                                            </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                            </td>
+                                        @else
+                                            <td style="background-color: #D65139; color:white">
+                                                {{$chord}}
+                                            </td>
+                                        @endif
 
+                                    @endforeach
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h4><strong>Chorus options</strong></h4>
+                        <table class="table table-striped text-center">
+                            @foreach($popProgressions['chorus'] as $progression)
+                                <tr>
+                                    <td style="background-color: #631D39; color:white"><strong>Try this one</strong></td>
+
+                                    @foreach($progression['chords'] as $chord)
+                                        @if($counter++%2 == 0)
+                                            <td style="background-color: #D73E1F; color: white">
+                                                {{$chord}}
+                                            </td>
+                                        @else
+                                            <td style="background-color: #D65139; color:white">
+                                                {{$chord}}
+                                            </td>
+                                        @endif
+
+                                    @endforeach
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h4><strong>Prechorus options</strong></h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="btn-group">
-                                    @foreach($popProgressions['prechorus'] as $progression)
-                                    <div class="col-md-12">
-                                        <div class="row">
 
-                                            @foreach($progression['chords'] as $chord)
-                                            <div class="col-md-2">
+                    <div class="col-md-6">
+                        <h4><strong>Prechorus options</strong></h4>
+                        <table class="table table-striped text-center">
+                            @foreach($popProgressions['prechorus'] as $progression)
+                                <tr>
+                                    <td style="background-color: #631D39; color:white"><strong>Try this one</strong></td>
+
+                                    @foreach($progression['chords'] as $chord)
+                                        @if($counter++%2 == 0)
+                                            <td style="background-color: #D73E1F; color: white">
                                                 {{$chord}}
-                                            </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
+                                            </td>
+                                        @else
+                                            <td style="background-color: #D65139; color:white">
+                                                {{$chord}}
+                                            </td>
+                                        @endif
+
                                     @endforeach
-                                </div>
-                            </div>
-                        </div>
+                                </tr>
+                            @endforeach
+                        </table>
                     </div>
-
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h4><strong>Bridge options</strong></h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="btn-group">
-                                    @foreach($popProgressions['bridge'] as $progression)
-                                    <div class="col-md-12">
-                                        <div class="row">
-
-                                            @foreach($progression['chords'] as $chord)
-                                            <div class="col-md-2">
+                    <div class="col-md-6">
+                        <h4><strong>Bridge options</strong></h4>
+                        <table class="table table-striped text-center">
+                            @foreach($popProgressions['bridge'] as $progression)
+                                <tr>
+                                    <td style="background-color: #631D39; color:white"><strong>Try this one</strong></td>
+                                    @foreach($progression['chords'] as $chord)
+                                        @if($counter++%2 == 0)
+                                            <td style="background-color: #D73E1F; color: white">
                                                 {{$chord}}
-                                            </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
+                                            </td>
+                                        @else
+                                            <td style="background-color: #D65139; color:white">
+                                                {{$chord}}
+                                            </td>
+                                        @endif
                                     @endforeach
-                                </div>
-                            </div>
-                        </div>
+                                </tr>
+                            @endforeach
+                        </table>
                     </div>
                 </div>
             </div>

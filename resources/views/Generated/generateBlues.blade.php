@@ -11,59 +11,56 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
+
                         <div class="row">
-                            <div class="col-md-12">
+
+
+                            <div class="col-md-6">
                                 <h4><strong>Eight-bar blues options</strong></h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="btn-group">
-
+                                <table class="table table-striped text-center">
                                     @foreach($bluesProgressions['eight'] as $progression)
-                                        <div class="col-md-12">
-                                            <div class="row">
+                                    <tr>
+                                        <td style="background-color: #631D39; color:white"><strong>Try this one</strong></td>
+                                        @foreach($progression['chords'] as $chord)
+                                            @if($counter++%2 == 0)
+                                                <td style="background-color: #D73E1F; color: white">
+                                                    {{$chord}}
+                                                </td>
+                                            @else
+                                                <td style="background-color: #D65139; color:white">
+                                                    {{$chord}}
+                                                </td>
+                                            @endif
 
-                                                @foreach($progression['chords'] as $chord)
-                                                    <div class="col-md-1">
-                                                        {{$chord}}
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
+                                        @endforeach
+                                    </tr>
                                     @endforeach
-                                </div>
+                                </table>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <h4><strong>Twelve-bar blues options</strong></h4>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="btn-group">
-
+                                <table class="table table-striped text-center">
                                     @foreach($bluesProgressions['twelve'] as $progression)
-                                        <div class="col-md-12">
-                                            <div class="row">
-
-                                                @foreach($progression['chords'] as $chord)
-                                                    <div class="col-md-1">
+                                        <tr>
+                                            <td style="background-color: #631D39; color:white"><strong>Try this one</strong></td>
+                                            @foreach($progression['chords'] as $chord)
+                                                @if($counter++%2 == 0)
+                                                    <td style="background-color: #D73E1F; color: white">
                                                         {{$chord}}
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
+                                                    </td>
+                                                @else
+                                                    <td style="background-color: #D65139; color:white">
+                                                        {{$chord}}
+                                                    </td>
+                                                @endif
+                                            @endforeach
+                                        </tr>
                                     @endforeach
-                                </div>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4"></div>
+                </div>
                 </div>
             </div>
         </div>
